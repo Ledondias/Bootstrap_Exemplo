@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar com Bootstrap</title>
+    <link rel="stylesheet" href="./lib/bootstrap.min.css">
+    <style>
+        .navbar-nav .nav-link.active{
+            color: #fff;
+        }
+        .nav-link{
+            text-align: center;
+        }
+        header{
+            position: sticky;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+        }
+        section{
+            height: 100vh;
+            background-color: #fff;
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="navbar navbar-expand-lg">
+            <div class="container">
+                <h1>Título do site</h1>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav id="menu" class="collapse navbar-collapse justify-content-end">
+                    <ul class="nav navbar-nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#start">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#products">Produtos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#promotions">Promoções</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contato</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button id="btn-checkup" class="btn btn-warning" type="button">Checar caixa de entrada</button>
+            </div> 
+        </div>
+    </header>
+    <div data-bs-spy="scroll" data-bs-target="#header">
+        <section id="start">
+            <h2>Início</h2>
+        </section>
+        <section id="products">
+            <h2>Produtos</h2>
+            <div class="container">
+                <nav class="nav nav-pills">
+                    <button data-bs-toggle="tab" data-bs-target="#electronics" class="nav-link active" type="button">Eletrônicos</button>
+                    <button data-bs-toggle="tab" data-bs-target="#male-clothing" class="nav-link" type="button">Moda masculina</button>
+                    <button data-bs-toggle="tab" data-bs-target="#female-clothing" class="nav-link" type="button">Moda feminina</button>
+                </nav>
+                <div class="tab-content">
+                    <div id="electronics" class="tab-pane active">
+                        Conteúdo da aba Eletrônicos
+                    </div>
+                    <div id="male-clothing" class="tab-pane">
+                        Conteúdo da aba Moda Masculina
+                    </div>
+                    <div id="female-clothing" class="tab-pane">
+                        Conteúdo da aba Moda feminina
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="promotions">
+            <h2>Promoções</h2>
+        </section>
+        <section id="contact">
+            <h2>Contato</h2>
+        </section>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast-messages" class="toast">
+            <header class="toast-header">
+                <strong>Importante</strong>
+            </header>
+            <div class="toast-body">
+                Você possui 10 mensagens não lidas!
+                <div class="mt-2 pt-2 border-top">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="toast">Descartar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./lib/bootstrap.bundle.min.js"></script>
+    <script>
+        const toastButton = document.getElementById('btn-checkup')
+        const messages = document.getElementById('toast-messages')
+
+        if(toastButton){
+            toastButton.addEventListener('click', function() {
+                const toast = new bootstrap.Toast(messages)
+                toast.show()
+            })
+        }
+    </script>
+</body>
+</html>
